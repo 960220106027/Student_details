@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Subject for {{ student.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: black;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Subject for {{ student.name }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.subject_name.label_tag }}
+                {{ form.subject_name }}
+            </div>
+            <div class="form-group">
+                {{ form.marks.label_tag }}
+                {{ form.marks }}
+            </div>
+            <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'student_detail' student.id %}">Back to Details</a>
+    </div>
+</body>
+</html>
